@@ -1,0 +1,22 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+const int inPin=0;
+
+void setup()
+{
+   lcd.begin(16,2);
+}
+void loop()
+{
+int valor= analogRead(inPin);
+float mVols = (valor/1024)*5000;
+float Celcius = mVols/10;
+lcd.clear();
+lcd.setCursor(0,0);
+lcd.print("En Cels.=");
+lcd.print(Celcius);
+lcd.setCursor(0,1);
+lcd.print("En Far.=");
+lcd.print((Celcius*9)/5+32);
+delay(1000);
+}
